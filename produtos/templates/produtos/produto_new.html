@@ -1,61 +1,42 @@
-{% extends 'base.html' %}
-{% block 'title' %} Produtos{% endblock 'title' %}
-{% block 'content' %}
-<form class="box" action="{% url 'produtos:novo_produto' %}" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-    {% if field.name == "preco" %}
-    <div class="field">
-        <label for="{{ field.aut_id }}" class="label">{{ field.label }}</label>
+{% extends 'base.html' %} {% block 'title' %} Produtos {% endblock 'title' %} 
+{%block 'content' %}
+<form
+  class="box"
+  action="{% url 'produtos:novo_produto' %}"
+  method="post"
+>
+  {% csrf_token %} {% for field in form %}
+  <div class="field">
+    <label
+      for="{{ field.auto_id }}"
+      class="label"
+      >{{ field.label }}</label
+    >
+    <div class="control">
+      {% if field.name == "preco" %}
+      <div class="field has-addons">
         <p class="control">
-        <div class="field has-addons">
-            <p class="control">
-                <a href="" class="button is-static">
-                    R$
-                </a>
-            </p>
-            <p class="control">
-                {{ field }}
-            </p>
-
-        </div>
+          <a class="button is-static">R$</a>
         </p>
-        <p class="help is-info">{{ field.help_text }}</p>
+        <p class="control">{{ field }}</p>
+      </div>
+      {% elif field.name == "cor" %}
+      <div class="select">{{ field }}</div>
+      {% else %} {{ field }} {% endif %}
     </div>
+    <p class="help is-info">{{ field.help_text }}</p>
+  </div>
+  {% endfor %}
 
-    {% else %}
-    <div class="field">
-        <label for="{{field.auto_id}}" class="label">{{ field.label }}</label>
-        <div class="control">
-            {% if field.name == "cor" %}
-            <div class="select">
-
-                {{field}}
-
-            </div>
-
-            {% else %}
-
-            {{field}}
-
-            {% endif %}
-        </div>
-        <p class="help is-info">{{ field.help_text }}</p>
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link">Enviar</button>
     </div>
-
-    {% endif %}
-    {% endfor %}
-    <div class="field is-grouped">
-
-
-        <div class="control">
-            <button class="button is-link">Enviar</button>
-        </div>
-        <div class="control">
-            <button class="button is-link is-light ml-3">
-                <a href="{% url 'produtos:lista_produtos' %}">Cancelar</a>
-            </button>
-        </div>
+    <div class="control is-pulled-right">
+      <button class="button is-link is-light">
+        <a href="{% url 'produtos:lista_produtos' %}">Cancelar</a>
+      </button>
     </div>
+  </div>
 </form>
 {% endblock 'content' %}
