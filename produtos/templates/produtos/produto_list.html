@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block 'title' %}Produtos{% endblock 'title' %}
+{%block 'content' %}
+<a href="{% url 'produtos:novo_produto' %}">Novo Produto</a>
+<table
+  id="table_id"
+  class="table display"
+>
+  <thead>
+    <tr>
+      <td>Produto</td>
+      <td>Preço</td>
+      <td>Ação</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for produto in produtos %}
+    <tr>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.preco }}</td>
+      <td>
+        <a href="{% url 'produtos:deleta_produto' produto.id %}">deletar</a>
+        <a href="{% url 'produtos:alterar_produto' produto.id %}">Alterar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'produtos:index' %}">Voltar</a>
+{% endblock 'content' %}
+
+<!--Javascripts-->
+{% block js %}
+<script>
+  $(document).ready(function () {
+    $("#table_id").DataTable();
+  });
+</script>
+{% endblock js %}

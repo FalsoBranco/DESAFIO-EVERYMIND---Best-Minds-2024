@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Produtos{% endblock title %}
+{% block 'content' %}
+<p>
+    <a href="{% url 'produtos:lista_produtos' %}">Produtos</a>
+</p>
+<p>
+    <a href="{% url 'index' %}">Pagina inicial</a>
+</p>
+
+{% endblock 'content' %}
+{% block js %}{% endblock js %}

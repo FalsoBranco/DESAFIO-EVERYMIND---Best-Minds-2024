@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block 'content' %}
+<div class="center">
+  <form
+    method="post"
+    class="card"
+  >
+    {% csrf_token %}
+    <input
+      type="hidden"
+      name="action"
+      value="delete"
+    />
+
+    <h2 class="title is-4 has-text-danger">Delete Produto</h2>
+    <p class="subtitle is-6">
+      Are you sure that you want to delete "{{ produto }}"?
+    </p>
+
+    <div class="field is-grouped">
+      <p class="control">
+        <button
+          type="submit"
+          class="button is-danger"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-trash-alt"></i>
+          </span>
+          <span>Delete</span>
+        </button>
+      </p>
+      <p class="control">
+        <a
+          href="{% url 'produtos:lista_produtos' %}"
+          class="button is-light"
+          >Cancel</a
+        >
+      </p>
+    </div>
+  </form>
+</div>
+{% endblock 'content' %}
