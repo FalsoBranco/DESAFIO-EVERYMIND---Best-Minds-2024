@@ -140,3 +140,4 @@ O código desenvolvido pode ser compartilhado através do seu próprio repositó
 **Observação:** Certifique-se de manter as informações sensíveis (como chaves de acesso ao banco de dados) seguras e não incluídas no repositório.
 
 Seja criativo e boa sorte! Estamos ansiosos para ver a sua solução.
+teste
